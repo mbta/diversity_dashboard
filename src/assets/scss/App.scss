@@ -1,12 +1,55 @@
-$bg-color: yellow;
-$border-color: red;
+@import url(https://rsms.me/inter/inter.css);
 
-.app {
-  font-family: helvetica, arial, sans-serif;
-  padding: 2em;
-  border: 5px solid $border-color;
+$enable-deprecation-messages: true;
+$enable-grid-classes: true;
 
-  p {
-    background-color: $bg-color;
-  }
-}
+$mbta-header-font: "Helvetica Neue";
+$mbta-body-font: "Inter";
+$mbta-small-font: "Helvetica Neue";
+
+$theme-colors: (
+  "primary": rgb(22, 92, 150),
+  "primary-darkest": rgb(11, 47, 76),
+  "primary-light": rgb(161, 198, 237),
+  "primary-lightest": rgb(206, 224, 244),
+  "primary-lightest-contrast": rgb(226, 236, 249),
+  "secondary": rgb(255, 206, 12),
+  "secondary-dark": rgb(216, 172, 0),
+  "secondary-light": rgb(255, 250, 233),
+  "accent-light": rgb(200, 253, 215)
+);
+
+$body-color: #000;
+$font-family-base: $mbta-body-font;
+$line-height-base: 1.275;
+$h1-font-size: 2.8125rem;
+$h2-font-size: 1.9375rem;
+$h3-font-size: 1.4375rem;
+$h4-font-size: 1.25rem;
+$h5-font-size: 1.125rem;
+$headings-margin-bottom: 0.375rem;
+$headings-font-family: $mbta-header-font;
+
+$link-color: darken(rgb(200, 253, 215), 50%);
+$paragraph-margin-bottom: 0.375rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 800px,
+  lg: 1088px,
+  xl: 1344px
+);
+
+$container-max-widths: (
+  sm: 544px * .95,
+  md: 800px * .95,
+  lg: 1088px * .95,
+  xl: 1344px * .95
+);
+
+$box-shadow: 0 2px 4px 0 #788093;
+$border-color: #f1f4f5;
+$border-radius: 0.25rem;
+
+@import "~bootstrap";
