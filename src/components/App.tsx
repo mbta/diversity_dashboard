@@ -1,5 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
+import Main from "./BaseChart";
 
 import "./../assets/scss/App.scss";
 
@@ -9,6 +10,7 @@ function App() {
   return (
     <div className="app">
       <h1>Hello {dashboardData.name}!</h1>
+      <Main />
     </div>
   );
 }
