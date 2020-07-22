@@ -1,16 +1,71 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
-import Main from "./BaseChart";
 
 import "./../assets/scss/App.scss";
+import { SectionHeader, NewLineSeparator } from "./Layout";
 
 declare var dashboardData: any;
 
 function App() {
   return (
-    <div className="app">
-      <h1>Hello {dashboardData.name}!</h1>
-      <Main />
+    <div className="container-fluid">
+      <div className="row">
+        <header className="col bg-accent-light p-3 m-2">
+          <small>{dashboardData.name}</small>
+          <h1>Diversity, Equity, & Inclusion Dashboard</h1>
+        </header>
+        <header className="col p-3 m-2">
+          <p className="lead">The future is here.</p>
+          <p>
+            Add your data by completing <a href="">the anonymous survey</a>.
+          </p>
+        </header>
+        <NewLineSeparator />
+        {/* Stacked and/or diverging bar, donut, treemap, probably */}
+        <section className="viz">
+          <p>Gender breakdown (+ baseline)</p>
+        </section>
+        <section className="viz">
+          <p>Race breakdown (+ baseline)</p>
+        </section>
+        <section className="viz">
+          <p>Ethnicity breakdown (+ baseline)</p>
+        </section>
+        <SectionHeader title={`Distributions across ${dashboardData.name}`} />
+        {/* histogram, dot plot, or box plot, probably */}
+        <section className="viz">
+          <p>Pay rate + gender</p>
+          <p>Pay rate + race</p>
+          <p>Pay rate + ethnicity</p>
+        </section>
+        <section className="viz">
+          <p>Job category + gender</p>
+          <p>Job category + race</p>
+          <p>Job category + ethnicity</p>
+        </section>
+        <section className="viz">
+          <p>Job tenure + gender</p>
+          <p>Job tenure + race</p>
+          <p>Job tenure + ethnicity</p>
+        </section>
+        <SectionHeader title={`Correlations at ${dashboardData.name} `} />
+        {/* XY heatmaps, probably */}
+        <section className="viz">
+          <p>Pay rate + gender</p>
+          <p>Pay rate + race</p>
+          <p>Pay rate + ethnicity</p>
+        </section>
+        <section className="viz">
+          <p>Job category + gender</p>
+          <p>Job category + race</p>
+          <p>Job category + ethnicity</p>
+        </section>
+        <section className="viz">
+          <p>Job tenure + gender</p>
+          <p>Job tenure + race</p>
+          <p>Job tenure + ethnicity</p>
+        </section>
+      </div>
     </div>
   );
 }
