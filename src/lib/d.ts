@@ -27,7 +27,11 @@ interface ReferenceData {
   is_hispanic_latinx: LatinxPercents;
 }
 
-enum LatinxResponse {"yes", "no", "Prefer not to say"}
+enum LatinxResponse {
+  "yes",
+  "no",
+  "Prefer not to say",
+}
 
 enum GenderResponse {
   "male",
@@ -72,7 +76,7 @@ enum CompensationRangeResponse {
 interface SurveyRecord {
   gender: GenderResponse;
   race: RaceResponse;
-  latinx: LatinxResponse,
+  latinx: LatinxResponse;
   employment_type: EmploymentTypeResponse;
   work_category: string;
   tenure: number;
