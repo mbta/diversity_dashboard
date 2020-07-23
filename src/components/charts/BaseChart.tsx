@@ -34,11 +34,9 @@ export class BaseChart extends React.Component<BaseChartProps, null> {
     super(props);
     this.colorScale = randomColors();
     // setup the data based on the specified variables
-    this.groupedData = !this.props.variableY
-      ? groupBy(
-          this.props.responseData,
-          (r: SurveyRecord) => r[this.props.variableX],
-        )
-      : this.props.responseData;
+    this.groupedData = groupBy(
+      this.props.responseData,
+      (r: SurveyRecord) => r[this.props.variableX],
+    ) as GroupedResponseData;
   }
 }
