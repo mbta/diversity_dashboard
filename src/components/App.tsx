@@ -3,8 +3,11 @@ import { hot } from "react-hot-loader";
 
 import "./../assets/scss/App.scss";
 import { SectionHeader, NewLineSeparator } from "./Layout";
+import { sampleSurveyRecords } from "./../lib/sample-data"
 
 declare var dashboardData: any; // eslint-disable-line no-var
+
+console.log(sampleSurveyRecords(50));
 
 function App() {
   return (
