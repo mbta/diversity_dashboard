@@ -4,7 +4,7 @@ import { hot } from "react-hot-loader";
 import "./../assets/scss/App.scss";
 import { SectionHeader, NewLineSeparator } from "./Layout";
 
-declare var dashboardData: any;
+declare var dashboardData: any; // eslint-disable-line no-var
 
 function App() {
   return (

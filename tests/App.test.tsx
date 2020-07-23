@@ -3,14 +3,23 @@ import * as ReactDOM from 'react-dom';
 import * as TestUtils from 'react-dom/test-utils';
 import App from '../src/components/App';
 
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  // cleanup on exiting
+  ReactDOM.unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
 it('App is rendered', () => {
-    // Render App in the document
-    const appElement: App = TestUtils.renderIntoDocument(
-        <App/>
-    );
-
-    const appNode = ReactDOM.findDOMNode(appElement);
-
-    // Verify text content
-    expect(appNode.textContent).toEqual('Hello World!Foo to the barz');
+  TestUtils.act(() => {    
+    ReactDOM.render(<App />, container); 
+  });  
+  expect(container.textContent).toContain(global.dashboardData.name);
 });
