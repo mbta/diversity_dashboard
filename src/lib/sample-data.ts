@@ -10,7 +10,7 @@ import {
 const randomIndex = (array: Array<any>): any =>
   array[Math.floor(Math.random() * array.length)];
 
-const enumToArray = (object: any) =>
+export const enumToArray = (object: any) =>
   Object.keys(object).filter((k) => Number.isNaN(Number(k)));
 
 const randomGenderResponse = (): GenderResponse =>
