@@ -2,7 +2,7 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 
 import "./../assets/scss/App.scss";
-import { GenderResponse, CompensationRangeResponse } from "./../lib/d"
+import { GenderResponse, CompensationRangeResponse } from "./../lib/d";
 import { SectionHeader, NewLineSeparator } from "./Layout";
 import { sampleSurveyRecords } from "../lib/sample-data";
 import { enumToArray } from "./../lib/sample-data";
@@ -11,6 +11,7 @@ import ChartBlock from "./ChartBlock";
 import Bar from "./charts/Bar";
 import AvgTenureBar from "./charts/AvgTenureBar";
 import HeatMap from "./charts/Heatmap";
+import JobCategoryBar from "./charts/JobCategoryBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
 const data = sampleSurveyRecords(50);
@@ -40,22 +41,27 @@ function App() {
         <ChartBlock title="Latinx">
           <Bar responseData={data} variableX="latinx" />
         </ChartBlock>
-        <SectionHeader title={`Distributions across ${dashboardData.name}`} />
-        {/* histogram, dot plot, or box plot, probably */}
-        <section className="viz">
-          <p>Pay rate + gender</p>
-          <p>Pay rate + race</p>
-          <p>Pay rate + ethnicity</p>
-        </section>
-        <section className="viz">
-          <p>Job category + gender</p>
-          <p>Job category + race</p>
-          <p>Job category + ethnicity</p>
-        </section>
-        <ChartBlock title={`Average job tenure across ${dashboardData.name} `}>
-          <AvgTenureBar data={data} />
+        <SectionHeader title={`Job types across ${dashboardData.name}`} />
+        <ChartBlock title="by race">
+          <JobCategoryBar data={data} variable="race" />
         </ChartBlock>
-        <SectionHeader title={`Correlations at ${dashboardData.name} `} />
+        <ChartBlock title="by gender">
+          <JobCategoryBar data={data} variable="gender" />
+        </ChartBlock>
+        <ChartBlock title="by ethnicity">
+          <JobCategoryBar data={data} variable="latinx" />
+        </ChartBlock>
+        <SectionHeader title={`Average job tenure at ${dashboardData.name} `} />
+        <ChartBlock title="by race">
+          <AvgTenureBar data={data} variable="race" />
+        </ChartBlock>
+        <ChartBlock title="by gender">
+          <AvgTenureBar data={data} variable="gender" />
+        </ChartBlock>
+        <ChartBlock title="by ethnicity">
+          <AvgTenureBar data={data} variable="latinx" />
+        </ChartBlock>
+        <SectionHeader title={`Pay at ${dashboardData.name} `} />
         {/* XY heatmaps, probably */}
         <section className="viz">
           <HeatMap
@@ -70,14 +76,9 @@ function App() {
           <p>Pay rate + ethnicity</p>
         </section>
         <section className="viz">
-          <p>Job category + gender</p>
-          <p>Job category + race</p>
-          <p>Job category + ethnicity</p>
-        </section>
-        <section className="viz">
-          <p>Job tenure + gender</p>
-          <p>Job tenure + race</p>
-          <p>Job tenure + ethnicity</p>
+          <p>Pay rate + gender</p>
+          <p>Pay rate + race</p>
+          <p>Pay rate + ethnicity</p>
         </section>
       </div>
     </div>

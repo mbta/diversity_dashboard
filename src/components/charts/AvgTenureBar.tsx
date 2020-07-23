@@ -13,18 +13,22 @@ import { SurveyRecord } from "../../lib/d";
 
 export default function AvgTenureBar(props: {
   data: SurveyRecord[];
+  variable: keyof SurveyRecord;
 }): React.ReactElement {
-  const dataByRace = groupBy(props.data, (r: SurveyRecord) => r["race"]);
+  const dataByVariable = groupBy(
+    props.data,
+    (r: SurveyRecord) => r[props.variable],
+  );
 
   return (
     <VictoryChart
       theme={VictoryTheme.grayscale}
       padding={{ left: 140, right: 40, bottom: 50, top: 50 }}
     >
-      {Object.entries(dataByRace).map((group, index) => {
-        const [raceName, raceGroup] = group;
+      {Object.entries(dataByVariable).map((group, index) => {
+        const [variableName, variableData] = group;
         const groupSum = mean(
-          raceGroup as SurveyRecord[],
+          variableData as SurveyRecord[],
           (d: SurveyRecord) => d["tenure"],
         );
         return (
@@ -32,7 +36,7 @@ export default function AvgTenureBar(props: {
             key={index}
             horizontal={true}
             barWidth={24}
-            data={[{ x: raceName, y: groupSum }]}
+            data={[{ x: variableName, y: groupSum }]}
             labels={({ datum }) => `${Math.round(datum.y * 100) / 100} yr`}
             labelComponent={<VictoryLabel dx={-10} textAnchor="end" />}
             style={{ labels: { fill: "white" } }}
