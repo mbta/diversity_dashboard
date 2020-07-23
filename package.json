@@ -25,12 +25,13 @@
   "scripts": {
     "build": "yarn run clean-dist && webpack -p --config=configs/webpack/prod.js",
     "clean-dist": "rimraf dist/*",
+    "jest": "jest --coverage --watchAll --config=configs/jest.json",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "prettier": "prettier './src/**/*.{js,ts,tsx}' --write",
     "start": "yarn run start-dev",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev.js",
     "start-prod": "yarn run build && node express.js",
-    "test": "jest --coverage --watchAll --config=configs/jest.json"
+    "test": "yarn run prettier && yarn run lint && yarn run jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
