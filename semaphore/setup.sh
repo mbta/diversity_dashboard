@@ -14,6 +14,10 @@ asdf update
 # install node.js
 asdf plugin-add nodejs || true
 asdf plugin-update --all
+
+# import the Node.js release team's OpenPGP keys to main keyring
+bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+
 asdf install
 # reshim is needed to pick up languages that were already installed in cache
 asdf reshim
