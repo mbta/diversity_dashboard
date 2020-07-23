@@ -7,6 +7,7 @@ import { sampleSurveyRecords } from "../lib/sample-data";
 import Donut from "./charts/Donut";
 import ChartBlock from "./ChartBlock";
 import Bar from "./charts/Bar";
+import AvgTenureBar from "./charts/AvgTenureBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
 const data = sampleSurveyRecords(50);
@@ -48,11 +49,9 @@ function App() {
           <p>Job category + race</p>
           <p>Job category + ethnicity</p>
         </section>
-        <section className="viz">
-          <p>Job tenure + gender</p>
-          <p>Job tenure + race</p>
-          <p>Job tenure + ethnicity</p>
-        </section>
+        <ChartBlock title={`Average job tenure across ${dashboardData.name} `}>
+          <AvgTenureBar data={data} />
+        </ChartBlock>
         <SectionHeader title={`Correlations at ${dashboardData.name} `} />
         {/* XY heatmaps, probably */}
         <section className="viz">
