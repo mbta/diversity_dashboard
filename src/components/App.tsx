@@ -3,11 +3,13 @@ import { hot } from "react-hot-loader";
 
 import "./../assets/scss/App.scss";
 import { SectionHeader, NewLineSeparator } from "./Layout";
-import { sampleSurveyRecords } from "./../lib/sample-data"
+import { sampleSurveyRecords } from "../lib/sample-data";
+import Donut from "./charts/Donut";
+import ChartBlock from "./ChartBlock";
+import Bar from "./charts/Bar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
-
-console.log(sampleSurveyRecords(50));
+const data = sampleSurveyRecords(50);
 
 function App() {
   return (
@@ -25,15 +27,15 @@ function App() {
         </header>
         <NewLineSeparator />
         {/* Stacked and/or diverging bar, donut, treemap, probably */}
-        <section className="viz">
-          <p>Gender breakdown (+ baseline)</p>
-        </section>
-        <section className="viz">
-          <p>Race breakdown (+ baseline)</p>
-        </section>
-        <section className="viz">
-          <p>Ethnicity breakdown (+ baseline)</p>
-        </section>
+        <ChartBlock title="Gender?">
+          <Donut responseData={data} variableX="gender" />
+        </ChartBlock>
+        <ChartBlock title="Race">
+          <Donut responseData={data} variableX="race" />
+        </ChartBlock>
+        <ChartBlock title="Latinx">
+          <Bar responseData={data} variableX="latinx" />
+        </ChartBlock>
         <SectionHeader title={`Distributions across ${dashboardData.name}`} />
         {/* histogram, dot plot, or box plot, probably */}
         <section className="viz">

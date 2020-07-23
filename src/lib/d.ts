@@ -27,7 +27,11 @@ export interface ReferenceData {
   is_hispanic_latinx: LatinxPercents;
 }
 
-export enum LatinxResponse {"yes", "no", "Prefer not to say"}
+export enum LatinxResponse {
+  "yes",
+  "no",
+  "Prefer not to say",
+}
 
 export enum GenderResponse {
   "male",
