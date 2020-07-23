@@ -1,11 +1,11 @@
-interface GenderPercents {
+export interface GenderPercents {
   male: number;
   female: number;
   other: number;
   not_say: number;
 }
 
-interface RacePercents {
+export interface RacePercents {
   asian: number;
   black_or_african_american: number;
   native_american_or_alaskan_native: number;
@@ -15,32 +15,28 @@ interface RacePercents {
   not_say: number;
 }
 
-interface LatinxPercents {
+export interface LatinxPercents {
   yes: number;
   no: number;
   not_say: number;
 }
 
-interface ReferenceData {
+export interface ReferenceData {
   gender: GenderPercents;
   race: RacePercents;
   is_hispanic_latinx: LatinxPercents;
 }
 
-enum LatinxResponse {
-  "yes",
-  "no",
-  "Prefer not to say",
-}
+export enum LatinxResponse {"yes", "no", "Prefer not to say"}
 
-enum GenderResponse {
+export enum GenderResponse {
   "male",
   "female",
   "other",
   "no",
 }
 
-enum RaceResponse {
+export enum RaceResponse {
   "Asian",
   "Black or African American",
   "Native American or Alaskan Native",
@@ -50,12 +46,12 @@ enum RaceResponse {
   "Prefer not to say",
 }
 
-enum EmploymentTypeResponse {
+export enum EmploymentTypeResponse {
   "part",
   "full",
 }
 
-enum CompensationRangeResponse {
+export enum CompensationRangeResponse {
   "0 - 20,000",
   "20,001 - 40,000",
   "40,001 - 60,000",
@@ -73,7 +69,7 @@ enum CompensationRangeResponse {
   "Above 280,000",
 }
 
-interface SurveyRecord {
+export interface SurveyRecord {
   gender: GenderResponse;
   race: RaceResponse;
   latinx: LatinxResponse;
@@ -83,7 +79,7 @@ interface SurveyRecord {
   compensation_range: CompensationRangeResponse;
 }
 
-interface DashboardData {
+export interface DashboardData {
   reference: ReferenceData;
   survey_records: SurveyRecord[];
 }
