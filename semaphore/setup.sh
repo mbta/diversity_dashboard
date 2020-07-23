@@ -13,6 +13,7 @@ asdf update
 
 # install node.js
 asdf plugin-add nodejs || true
+asdf plugin-add yarn || true
 asdf plugin-update --all
 
 # import the Node.js release team's OpenPGP keys to main keyring
