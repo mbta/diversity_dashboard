@@ -2,7 +2,21 @@ import * as React from "react";
 import HeatMap from "react-heatmap-grid";
 import { SurveyRecord } from "./../../lib/d";
 
-export default ({ data, xKey, yKey, xLabels, yLabels }) => {
+interface Props {
+  data: SurveyRecord[];
+  xKey: string;
+  yKey: string;
+  xLabels: string[];
+  yLabels: string[];
+}
+
+export default function Heatmap({
+  data,
+  xKey,
+  yKey,
+  xLabels,
+  yLabels,
+}: Props): React.ReactElement {
   const matrix = Array(yLabels.length)
     .fill(undefined)
     .map(() => Array(xLabels.length).fill(0));
@@ -27,7 +41,7 @@ export default ({ data, xKey, yKey, xLabels, yLabels }) => {
         fontSize: "11.5px",
         color: "#444",
       })}
-      cellRender={(value) => value && <div>{value}</div>}
+      cellRender={(value: any) => value && <div>{value}</div>}
     />
   );
-};
+}

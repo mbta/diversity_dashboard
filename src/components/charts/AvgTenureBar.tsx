@@ -10,6 +10,7 @@ import {
 } from "victory";
 import { textWithLineBreaks } from "../../lib/util";
 import { SurveyRecord } from "../../lib/d";
+import theme from "./theme";
 
 export default function AvgTenureBar(props: {
   data: SurveyRecord[];
@@ -22,9 +23,12 @@ export default function AvgTenureBar(props: {
 
   return (
     <VictoryChart
-      theme={VictoryTheme.grayscale}
-      padding={{ left: 140, right: 40, bottom: 50, top: 50 }}
+      theme={theme}
+      padding={{ left: 140, right: 10, bottom: 20, top: 20 }}
+      width={300}
+      height={Object.keys(dataByVariable).length * 30}
     >
+      <VictoryAxis tickFormat={textWithLineBreaks} />
       {Object.entries(dataByVariable).map((group, index) => {
         const [variableName, variableData] = group;
         const groupSum = mean(
@@ -35,15 +39,13 @@ export default function AvgTenureBar(props: {
           <VictoryBar
             key={index}
             horizontal={true}
-            barWidth={24}
+            barWidth={20}
             data={[{ x: variableName, y: groupSum }]}
             labels={({ datum }) => `${Math.round(datum.y * 100) / 100} yr`}
             labelComponent={<VictoryLabel dx={-10} textAnchor="end" />}
-            style={{ labels: { fill: "white" } }}
           />
         );
       })}
-      <VictoryAxis tickFormat={textWithLineBreaks} />
     </VictoryChart>
   );
 }
