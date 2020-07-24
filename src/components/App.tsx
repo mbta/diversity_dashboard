@@ -2,10 +2,19 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 
 import "./../assets/scss/App.scss";
-import { GenderResponse, CompensationRangeResponse, RaceResponse, LatinxResponse } from "./../lib/d"
+import {
+  GenderResponse,
+  CompensationRangeResponse,
+  RaceResponse,
+  LatinxResponse,
+} from "./../lib/d";
 import { SectionHeader, NewLineSeparator } from "./Layout";
 import { sampleSurveyRecords } from "../lib/sample-data";
-import { enumToArray } from "./../lib/sample-data";
+import {
+  enumToArray,
+  elementValueToList,
+  castStringsToInts,
+} from "./../lib/util";
 import Donut from "./charts/Donut";
 import ChartBlock from "./ChartBlock";
 import Bar from "./charts/Bar";
@@ -15,6 +24,10 @@ import JobCategoryBar from "./charts/JobCategoryBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
 const data = sampleSurveyRecords(100);
+const workCategoryResponses = elementValueToList(data, "work_category").sort();
+const jobTenureResponses = castStringsToInts(
+  elementValueToList(data, "tenure"),
+).sort((a: number, b: number) => b - a);
 
 function App() {
   return (
@@ -90,10 +103,59 @@ function App() {
             </div>
           </div>
         </section>
-        <section className="viz">
-          <p>Pay rate + gender</p>
-          <p>Pay rate + race</p>
-          <p>Pay rate + ethnicity</p>
+        <section className="viz viz-100">
+          <div className="container-fluid">
+            <div className="row">
+              <HeatMap
+                data={data}
+                xKey={"gender"}
+                yKey={"work_category"}
+                xLabels={enumToArray(GenderResponse)}
+                yLabels={workCategoryResponses}
+              />
+              <HeatMap
+                data={data}
+                xKey={"race"}
+                yKey={"work_category"}
+                xLabels={enumToArray(RaceResponse)}
+                yLabels={workCategoryResponses}
+              />
+              <HeatMap
+                data={data}
+                xKey={"latinx"}
+                yKey={"work_category"}
+                xLabels={enumToArray(LatinxResponse)}
+                yLabels={workCategoryResponses}
+              />
+            </div>
+          </div>
+        </section>
+        <section className="viz viz-100">
+          <div className="container-fluid">
+            <div className="row">
+              <HeatMap
+                data={data}
+                xKey={"gender"}
+                yKey={"tenure"}
+                xLabels={enumToArray(GenderResponse)}
+                yLabels={jobTenureResponses}
+              />
+              <HeatMap
+                data={data}
+                xKey={"race"}
+                yKey={"tenure"}
+                xLabels={enumToArray(RaceResponse)}
+                yLabels={jobTenureResponses}
+              />
+              <HeatMap
+                data={data}
+                xKey={"latinx"}
+                yKey={"tenure"}
+                xLabels={enumToArray(LatinxResponse)}
+                yLabels={jobTenureResponses}
+              />
+            </div>
+          </div>
         </section>
       </div>
     </div>
