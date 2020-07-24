@@ -2,7 +2,7 @@ import * as React from "react";
 import { hot } from "react-hot-loader";
 
 import "./../assets/scss/App.scss";
-import { GenderResponse, CompensationRangeResponse } from "./../lib/d";
+import { GenderResponse, CompensationRangeResponse, RaceResponse, LatinxResponse } from "./../lib/d"
 import { SectionHeader, NewLineSeparator } from "./Layout";
 import { sampleSurveyRecords } from "../lib/sample-data";
 import { enumToArray } from "./../lib/sample-data";
@@ -14,7 +14,7 @@ import HeatMap from "./charts/Heatmap";
 import JobCategoryBar from "./charts/JobCategoryBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
-const data = sampleSurveyRecords(50);
+const data = sampleSurveyRecords(100);
 
 function App() {
   return (
@@ -63,17 +63,32 @@ function App() {
         </ChartBlock>
         <SectionHeader title={`Pay at ${dashboardData.name} `} />
         {/* XY heatmaps, probably */}
-        <section className="viz">
-          <HeatMap
-            data={data}
-            xKey={"gender"}
-            yKey={"compensation_range"}
-            yLabels={enumToArray(CompensationRangeResponse)}
-            xLabels={enumToArray(GenderResponse)}
-          />
-          <p>Pay rate + gender</p>
-          <p>Pay rate + race</p>
-          <p>Pay rate + ethnicity</p>
+        <section className="viz viz-100">
+          <div className="container-fluid">
+            <div className="row">
+              <HeatMap
+                data={data}
+                xKey={"gender"}
+                yKey={"compensation_range"}
+                xLabels={enumToArray(GenderResponse)}
+                yLabels={enumToArray(CompensationRangeResponse)}
+              />
+              <HeatMap
+                data={data}
+                xKey={"race"}
+                yKey={"compensation_range"}
+                xLabels={enumToArray(RaceResponse)}
+                yLabels={enumToArray(CompensationRangeResponse)}
+              />
+              <HeatMap
+                data={data}
+                xKey={"latinx"}
+                yKey={"compensation_range"}
+                xLabels={enumToArray(LatinxResponse)}
+                yLabels={enumToArray(CompensationRangeResponse)}
+              />
+            </div>
+          </div>
         </section>
         <section className="viz">
           <p>Pay rate + gender</p>
