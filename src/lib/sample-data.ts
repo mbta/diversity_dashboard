@@ -28,7 +28,7 @@ const randomEmploymentTypeResponse = (): EmploymentTypeResponse =>
 const randomCompensationRangeResponse = (): CompensationRangeResponse =>
   randomIndex(enumToArray(CompensationRangeResponse));
 
-const workCategoryOptions = [
+export const workCategoryOptions = [
   "Administration",
   "Content",
   "Design",

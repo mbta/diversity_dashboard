@@ -22,7 +22,7 @@ export type BaseChartProps = {
   variableY?: keyof SurveyRecord;
 };
 
-type GroupedResponseData = {
+export type GroupedResponseData = {
   [group in keyof SurveyRecord]: SurveyRecord[];
 };
 
