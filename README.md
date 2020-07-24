@@ -1,21 +1,23 @@
-# React Webpack Typescript Starter
-> Minimal starter with hot module replacement (HMR) for rapid development.
+# Diversity, Equity, & Inclusion Dashboard
+> Helping organizations to be more accountable.
 
-* **[React](https://facebook.github.io/react/)** (16.x)
-* **[Webpack](https://webpack.js.org/)** (4.x)
-* **[Typescript](https://www.typescriptlang.org/)** (3.x)
-* **[Hot Module Replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/)** ([React Hot Loader](https://github.com/gaearon/react-hot-loader))
-* Production build script (Webpack)
-* Image loading/minification ([Image Webpack Loader](https://github.com/tcoopman/image-webpack-loader))
-* [SASS](http://sass-lang.com/) support
-* Code linting ([ESLint](https://github.com/eslint/eslint)) and formatting ([Prettier](https://github.com/prettier/prettier))
-* Test framework ([Jest](https://facebook.github.io/jest/))
+## Overview
 
-## Installation
+Organizations that are serious about achieving diversity, equity, and inclusion need to know facts about their workforce to support their hiring process. For example:
+- What is our gender breakdown?
+- What is the racial/ethnic composition of our organization?
+- How does our composition compare to the communities/customers we serve?
+- Are people doing the same work at the same level compensated equally?
+
+This project will house guidance on how to collect this information while protecting the privacy and free software that organizations can use to visualize this information so they can be held accountable to themselves, their employees, and the communities/customers they serve.
+
+## Technical Section
+
+### Installation
 1. Clone/download repo
 2. `yarn install` (or `npm install` for npm)
 
-## Usage
+### Usage
 **Development**
 
 `yarn run start-dev`
@@ -45,7 +47,3 @@ Command | Description
 `yarn run start` | (alias of `yarn run start-dev`)
 
 **Note**: replace `yarn` with `npm` in `package.json` if you use npm.
-
-## See also
-* [React Webpack Babel Starter](https://github.com/vikpe/react-webpack-babel-starter)
-* [Isomorphic Webapp Starter](https://github.com/vikpe/isomorphic-webapp-starter)
