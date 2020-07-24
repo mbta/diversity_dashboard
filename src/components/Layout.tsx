@@ -5,11 +5,7 @@ export const NewLineSeparator = (): React.ReactElement => (
 );
 
 export const SectionHeader = (props: { title: string }): React.ReactElement => (
-  <>
-    <div className="w-100"></div>
-    <header className="col my-3 p-2 bg-accent-light">
-      <p className="lead p-2 m-0 text-center bg-white">{props.title}</p>
-    </header>
-    <div className="w-100"></div>
-  </>
+  <div className="col-12">
+    <h2 className="mt-3">{props.title}</h2>
+  </div>
 );
