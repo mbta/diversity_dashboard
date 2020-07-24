@@ -78,7 +78,7 @@ export enum BucketedCompensationRangeResponse {
   "60,001 - 100,000",
   "100,001 - 140,000",
   "140,001 - 180,000",
-  "Over 180,00",
+  "Over 180,000",
 }
 
 export enum BucketedTenureResponse {
