@@ -16,21 +16,22 @@ const colorScales = [
 const randomColors = () =>
   colorScales[Math.floor(Math.random() * colorScales.length)];
 
-export type BaseChartProps = {
+export interface BaseChartProps {
   responseData: SurveyRecord[];
   variableX: keyof SurveyRecord;
   variableY?: keyof SurveyRecord;
-};
+}
 
 export type GroupedResponseData = {
   [group in keyof SurveyRecord]: SurveyRecord[];
 };
 
-export class BaseChart extends React.Component<BaseChartProps, null> {
+// generic class to be extended by the other chart types
+export class BaseChart<P> extends React.Component<P & BaseChartProps, null> {
   colorScale: ColorScalePropType;
   groupedData: GroupedResponseData;
 
-  constructor(props: BaseChartProps) {
+  constructor(props: P & BaseChartProps) {
     super(props);
     this.colorScale = randomColors();
     // setup the data based on the specified variables

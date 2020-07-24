@@ -17,7 +17,6 @@ import {
   bucketCompensationRanges,
   bucketTenureData,
 } from "./../lib/util";
-import Donut from "./charts/Donut";
 import ChartBlock from "./ChartBlock";
 import Bar from "./charts/Bar";
 import AvgTenureBar from "./charts/AvgTenureBar";
@@ -49,13 +48,13 @@ function App() {
       </div>
       <div className="row row-cols-3">
         <ChartBlock title="Gender" noBorders={false}>
-          <Donut responseData={data} variableX="gender" />
+          <Bar responseData={data} variableX="gender" horizontal={true} />
         </ChartBlock>
         <ChartBlock title="Race" noBorders={true}>
-          <Donut responseData={data} variableX="race" />
+          <Bar responseData={data} variableX="race" horizontal={true} />
         </ChartBlock>
         <ChartBlock title="Latinx" noBorders={false}>
-          <Bar responseData={data} variableX="latinx" />
+          <Bar responseData={data} variableX="latinx" horizontal={true} />
         </ChartBlock>
 
         <SectionHeader title={`Distributions: Work category`} />
