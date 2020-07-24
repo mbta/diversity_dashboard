@@ -73,6 +73,22 @@ export enum CompensationRangeResponse {
   "Above 280,000",
 }
 
+export enum BucketedCompensationRangeResponse {
+  "0 - 60,000",
+  "60,001 - 100,000",
+  "100,001 - 140,000",
+  "140,001 - 180,000",
+  "Over 180,00",
+}
+
+export enum BucketedTenureResponse {
+  "1 year or less",
+  "1 to 2 years",
+  "2 to 5 years",
+  "5 to 10 years",
+  "more than 10 years",
+}
+
 export interface SurveyRecord {
   gender: GenderResponse;
   race: RaceResponse;
@@ -81,6 +97,11 @@ export interface SurveyRecord {
   work_category: string;
   tenure: number;
   compensation_range: CompensationRangeResponse;
+}
+
+export interface SurveyRecordBucketed extends SurveyRecord {
+  tenure_bucketed?: BucketedTenureResponse;
+  compensation_range_bucketed?: BucketedCompensationRangeResponse;
 }
 
 export interface DashboardData {

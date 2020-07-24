@@ -4,16 +4,18 @@ import { hot } from "react-hot-loader";
 import "./../assets/scss/App.scss";
 import {
   GenderResponse,
-  CompensationRangeResponse,
   RaceResponse,
   LatinxResponse,
+  BucketedCompensationRangeResponse,
+  BucketedTenureResponse,
 } from "./../lib/d";
 import { SectionHeader, NewLineSeparator } from "./Layout";
 import { sampleSurveyRecords } from "../lib/sample-data";
 import {
   enumToArray,
   elementValueToList,
-  castStringsToInts,
+  bucketCompensationRanges,
+  bucketTenureData,
 } from "./../lib/util";
 import Donut from "./charts/Donut";
 import ChartBlock from "./ChartBlock";
@@ -24,10 +26,8 @@ import JobCategoryBar from "./charts/JobCategoryBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
 const data = sampleSurveyRecords(100);
+const dataBucketed = bucketCompensationRanges(bucketTenureData(data));
 const workCategoryResponses = elementValueToList(data, "work_category").sort();
-const jobTenureResponses = castStringsToInts(
-  elementValueToList(data, "tenure"),
-).sort((a: number, b: number) => b - a);
 
 function App() {
   return (
@@ -75,30 +75,29 @@ function App() {
           <AvgTenureBar data={data} variable="latinx" />
         </ChartBlock>
         <SectionHeader title={`Pay at ${dashboardData.name} `} />
-        {/* XY heatmaps, probably */}
         <section className="viz viz-100">
           <div className="container-fluid">
             <div className="row">
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"gender"}
-                yKey={"compensation_range"}
+                yKey={"compensation_range_bucketed"}
                 xLabels={enumToArray(GenderResponse)}
-                yLabels={enumToArray(CompensationRangeResponse)}
+                yLabels={enumToArray(BucketedCompensationRangeResponse)}
               />
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"race"}
-                yKey={"compensation_range"}
+                yKey={"compensation_range_bucketed"}
                 xLabels={enumToArray(RaceResponse)}
-                yLabels={enumToArray(CompensationRangeResponse)}
+                yLabels={enumToArray(BucketedCompensationRangeResponse)}
               />
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"latinx"}
-                yKey={"compensation_range"}
+                yKey={"compensation_range_bucketed"}
                 xLabels={enumToArray(LatinxResponse)}
-                yLabels={enumToArray(CompensationRangeResponse)}
+                yLabels={enumToArray(BucketedCompensationRangeResponse)}
               />
             </div>
           </div>
@@ -134,25 +133,25 @@ function App() {
           <div className="container-fluid">
             <div className="row">
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"gender"}
-                yKey={"tenure"}
+                yKey={"tenure_bucketed"}
                 xLabels={enumToArray(GenderResponse)}
-                yLabels={jobTenureResponses}
+                yLabels={enumToArray(BucketedTenureResponse)}
               />
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"race"}
-                yKey={"tenure"}
+                yKey={"tenure_bucketed"}
                 xLabels={enumToArray(RaceResponse)}
-                yLabels={jobTenureResponses}
+                yLabels={enumToArray(BucketedTenureResponse)}
               />
               <HeatMap
-                data={data}
+                data={dataBucketed}
                 xKey={"latinx"}
-                yKey={"tenure"}
+                yKey={"tenure_bucketed"}
                 xLabels={enumToArray(LatinxResponse)}
-                yLabels={jobTenureResponses}
+                yLabels={enumToArray(BucketedTenureResponse)}
               />
             </div>
           </div>
