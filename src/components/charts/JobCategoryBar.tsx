@@ -47,7 +47,7 @@ export default function JobCategoryBar(props: {
         const dataByVariable: GroupedResponseData = groupBy(
           inCategory,
           (r: SurveyRecord) => r[props.variable],
-        );
+        ) as GroupedResponseData;
 
         return (
           <VictoryStack key={category} theme={theme} colorScale={colors}>

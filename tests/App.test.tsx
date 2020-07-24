@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as TestUtils from 'react-dom/test-utils';
-import App from '../src/components/App';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import * as TestUtils from "react-dom/test-utils";
+import App from "../src/components/App";
 
 let container = null;
 beforeEach(() => {
@@ -17,9 +17,9 @@ afterEach(() => {
   container = null;
 });
 
-it('App is rendered', () => {
-  TestUtils.act(() => {    
-    ReactDOM.render(<App />, container); 
-  });  
-  expect(container.textContent).toContain(global.dashboardData.name);
+it("App is rendered", () => {
+  TestUtils.act(() => {
+    ReactDOM.render(<App />, container);
+  });
+  expect(container.textContent).toContain("Dashboard");
 });
