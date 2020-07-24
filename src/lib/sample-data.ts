@@ -7,11 +7,10 @@ import {
   CompensationRangeResponse,
 } from "./d";
 
+import { enumToArray } from "./util";
+
 const randomIndex = (array: Array<any>): any =>
   array[Math.floor(Math.random() * array.length)];
-
-export const enumToArray = (object: any) =>
-  Object.keys(object).filter((k) => Number.isNaN(Number(k)));
 
 const randomGenderResponse = (): GenderResponse =>
   randomIndex(enumToArray(GenderResponse));
@@ -34,7 +33,7 @@ export const workCategoryOptions = [
   "Design",
   "Engineering",
   "Leadership",
-  "Product Management / Project Management",
+  "Product/Project Management",
   "Recruitment",
 ];
 
