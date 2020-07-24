@@ -33,129 +33,139 @@ function App() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <header className="col bg-accent-light p-3 m-2">
-          <small>{dashboardData.name}</small>
-          <h1>Diversity, Equity, & Inclusion Dashboard</h1>
-        </header>
-        <header className="col p-3 m-2">
-          <p className="lead">The future is here.</p>
-          <p>
-            Add your data by completing <a href="">the anonymous survey</a>.
+        <div className="col">
+          <h1>Diversity, Equity, &amp; Inclusion Dashboard</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <p className="mb-3">
+            The following Diversity, Equity, &amp; Inclusion Dashboard (Beta)
+            provides an interactive look at who we are, what work we do, and how
+            we are compensated today.
           </p>
-        </header>
+        </div>
         <NewLineSeparator />
-        {/* Stacked and/or diverging bar, donut, treemap, probably */}
-        <ChartBlock title="Gender?">
+      </div>
+      <div className="row row-cols-3">
+        <ChartBlock title="Gender" noBorders={false}>
           <Donut responseData={data} variableX="gender" />
         </ChartBlock>
-        <ChartBlock title="Race">
+        <ChartBlock title="Race" noBorders={true}>
           <Donut responseData={data} variableX="race" />
         </ChartBlock>
-        <ChartBlock title="Latinx">
+        <ChartBlock title="Latinx" noBorders={false}>
           <Bar responseData={data} variableX="latinx" />
         </ChartBlock>
-        <SectionHeader title={`Job types across ${dashboardData.name}`} />
-        <ChartBlock title="by race">
-          <JobCategoryBar data={data} variable="race" />
-        </ChartBlock>
-        <ChartBlock title="by gender">
+
+        <SectionHeader title={`Distributions: Work category`} />
+        <ChartBlock title="by gender" noBorders={false}>
           <JobCategoryBar data={data} variable="gender" />
         </ChartBlock>
-        <ChartBlock title="by ethnicity">
+        <ChartBlock title="by race" noBorders={true}>
+          <JobCategoryBar data={data} variable="race" />
+        </ChartBlock>
+        <ChartBlock title="by ethnicity" noBorders={false}>
           <JobCategoryBar data={data} variable="latinx" />
         </ChartBlock>
-        <SectionHeader title={`Average job tenure at ${dashboardData.name} `} />
-        <ChartBlock title="by race">
+
+        <SectionHeader title={`Distributions: Average job tenure`} />
+        <ChartBlock title="by race" noBorders={false}>
           <AvgTenureBar data={data} variable="race" />
         </ChartBlock>
-        <ChartBlock title="by gender">
+        <ChartBlock title="by gender" noBorders={true}>
           <AvgTenureBar data={data} variable="gender" />
         </ChartBlock>
-        <ChartBlock title="by ethnicity">
+        <ChartBlock title="by ethnicity" noBorders={false}>
           <AvgTenureBar data={data} variable="latinx" />
         </ChartBlock>
-        <SectionHeader title={`Pay at ${dashboardData.name} `} />
-        <section className="viz viz-100">
-          <div className="container-fluid">
-            <div className="row">
-              <HeatMap
-                data={dataBucketed}
-                xKey={"gender"}
-                yKey={"compensation_range_bucketed"}
-                xLabels={enumToArray(GenderResponse)}
-                yLabels={enumToArray(BucketedCompensationRangeResponse)}
-              />
-              <HeatMap
-                data={dataBucketed}
-                xKey={"race"}
-                yKey={"compensation_range_bucketed"}
-                xLabels={enumToArray(RaceResponse)}
-                yLabels={enumToArray(BucketedCompensationRangeResponse)}
-              />
-              <HeatMap
-                data={dataBucketed}
-                xKey={"latinx"}
-                yKey={"compensation_range_bucketed"}
-                xLabels={enumToArray(LatinxResponse)}
-                yLabels={enumToArray(BucketedCompensationRangeResponse)}
-              />
-            </div>
-          </div>
-        </section>
-        <section className="viz viz-100">
-          <div className="container-fluid">
-            <div className="row">
-              <HeatMap
-                data={data}
-                xKey={"gender"}
-                yKey={"work_category"}
-                xLabels={enumToArray(GenderResponse)}
-                yLabels={workCategoryResponses}
-              />
-              <HeatMap
-                data={data}
-                xKey={"race"}
-                yKey={"work_category"}
-                xLabels={enumToArray(RaceResponse)}
-                yLabels={workCategoryResponses}
-              />
-              <HeatMap
-                data={data}
-                xKey={"latinx"}
-                yKey={"work_category"}
-                xLabels={enumToArray(LatinxResponse)}
-                yLabels={workCategoryResponses}
-              />
-            </div>
-          </div>
-        </section>
-        <section className="viz viz-100">
-          <div className="container-fluid">
-            <div className="row">
-              <HeatMap
-                data={dataBucketed}
-                xKey={"gender"}
-                yKey={"tenure_bucketed"}
-                xLabels={enumToArray(GenderResponse)}
-                yLabels={enumToArray(BucketedTenureResponse)}
-              />
-              <HeatMap
-                data={dataBucketed}
-                xKey={"race"}
-                yKey={"tenure_bucketed"}
-                xLabels={enumToArray(RaceResponse)}
-                yLabels={enumToArray(BucketedTenureResponse)}
-              />
-              <HeatMap
-                data={dataBucketed}
-                xKey={"latinx"}
-                yKey={"tenure_bucketed"}
-                xLabels={enumToArray(LatinxResponse)}
-                yLabels={enumToArray(BucketedTenureResponse)}
-              />
-            </div>
-          </div>
-        </section>
+
+        <SectionHeader title={`Correlations: Pay`} />
+        <ChartBlock title="by gender" noBorders={false}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"gender"}
+            yKey={"compensation_range_bucketed"}
+            xLabels={enumToArray(GenderResponse)}
+            yLabels={enumToArray(BucketedCompensationRangeResponse)}
+          />
+        </ChartBlock>
+        <ChartBlock title="by race" noBorders={true}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"race"}
+            yKey={"compensation_range_bucketed"}
+            xLabels={enumToArray(RaceResponse)}
+            yLabels={enumToArray(BucketedCompensationRangeResponse)}
+          />
+        </ChartBlock>
+        <ChartBlock title="Latinx" noBorders={false}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"latinx"}
+            yKey={"compensation_range_bucketed"}
+            xLabels={enumToArray(LatinxResponse)}
+            yLabels={enumToArray(BucketedCompensationRangeResponse)}
+          />
+        </ChartBlock>
+
+        <SectionHeader title={`Correlations: Work category`} />
+        <ChartBlock title="by gender" noBorders={false}>
+          <HeatMap
+            data={data}
+            xKey={"gender"}
+            yKey={"work_category"}
+            xLabels={enumToArray(GenderResponse)}
+            yLabels={workCategoryResponses}
+          />
+        </ChartBlock>
+        <ChartBlock title="by race" noBorders={true}>
+          <HeatMap
+            data={data}
+            xKey={"race"}
+            yKey={"work_category"}
+            xLabels={enumToArray(RaceResponse)}
+            yLabels={workCategoryResponses}
+          />
+        </ChartBlock>
+        <ChartBlock title="Latinx" noBorders={false}>
+          <HeatMap
+            data={data}
+            xKey={"latinx"}
+            yKey={"work_category"}
+            xLabels={enumToArray(LatinxResponse)}
+            yLabels={workCategoryResponses}
+          />
+        </ChartBlock>
+
+        <SectionHeader title={`Correlations: Tenure`} />
+        <ChartBlock title="by gender" noBorders={false}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"gender"}
+            yKey={"tenure_bucketed"}
+            xLabels={enumToArray(GenderResponse)}
+            yLabels={enumToArray(BucketedTenureResponse)}
+          />
+        </ChartBlock>
+        <ChartBlock title="by race" noBorders={true}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"race"}
+            yKey={"tenure_bucketed"}
+            xLabels={enumToArray(RaceResponse)}
+            yLabels={enumToArray(BucketedTenureResponse)}
+          />
+        </ChartBlock>
+        <ChartBlock title="Latinx" noBorders={false}>
+          <HeatMap
+            data={dataBucketed}
+            xKey={"latinx"}
+            yKey={"tenure_bucketed"}
+            xLabels={enumToArray(LatinxResponse)}
+            yLabels={enumToArray(BucketedTenureResponse)}
+          />
+        </ChartBlock>
       </div>
     </div>
   );
