@@ -3,13 +3,13 @@
 
 ## Overview
 
-Organizations that are serious about achieving diversity, equity, and inclusion need to know facts about their workforce to support their hiring process. For example:
+Organizations that are serious about achieving diversity, equity, and inclusion amongst their workforce need to know facts about their people to support their hiring process. For example:
 - What is our gender breakdown?
 - What is the racial/ethnic composition of our organization?
 - How does our composition compare to the communities/customers we serve?
 - Are people doing the same work at the same level compensated equally?
 
-This project will house guidance on how to collect this information while protecting the privacy and free software that organizations can use to visualize this information so they can be held accountable to themselves, their employees, and the communities/customers they serve.
+This project will house guidance on how to collect this information while protecting individual privacy, as well as free software that organizations can use to visualize this information so they can be held accountable to themselves, their employees, and the communities/customers they serve.
 
 ## Technical Section
 
