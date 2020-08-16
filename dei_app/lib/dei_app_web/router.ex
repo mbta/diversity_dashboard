@@ -2,21 +2,41 @@ defmodule DeiAppWeb.Router do
   use DeiAppWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
-  scope "/", DeiAppWeb do
-    pipe_through :browser
+  pipeline :auth do
+    plug(DeiApp.UserManager.Pipeline)
+  end
 
-    get "/", PageController, :index
+  pipeline :ensure_auth do
+    plug(Guardian.Plug.EnsureAuthenticated)
+  end
+
+  # Maybe logged in routes
+  scope "/", DeiAppWeb do
+    pipe_through([:browser, :auth])
+
+    get("/", PageController, :index)
+
+    get("/login", SessionController, :new)
+    post("/login", SessionController, :login)
+    get("/logout", SessionController, :logout)
+  end
+
+  # Definitely logged in scope
+  scope "/", DeiAppWeb do
+    pipe_through([:browser, :auth, :ensure_auth])
+
+    get("/protected", PageController, :protected)
   end
 
   # Other scopes may use custom stacks.
@@ -35,8 +55,8 @@ defmodule DeiAppWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: DeiAppWeb.Telemetry
+      pipe_through(:browser)
+      live_dashboard("/dashboard", metrics: DeiAppWeb.Telemetry)
     end
   end
 end
