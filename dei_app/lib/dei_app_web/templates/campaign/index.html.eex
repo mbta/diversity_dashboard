@@ -1,0 +1,56 @@
+<h1>Listing Campaigns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Is anonymous</th>
+      <th>Email</th>
+      <th>Work category</th>
+      <th>Is race multiselect</th>
+      <th>Is compensation requested</th>
+      <th>Is compensation a range</th>
+      <th>Reference gender male</th>
+      <th>Reference gender female</th>
+      <th>Reference gender other</th>
+      <th>Reference race asian</th>
+      <th>Reference race black or african american</th>
+      <th>Reference race native american or alaskan native</th>
+      <th>Reference race native hawaiian or other pacific islander</th>
+      <th>Reference race white</th>
+      <th>Reference race other</th>
+      <th>Reference ethnicity hispanic latinx</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for campaign <- @campaigns do %>
+    <tr>
+      <td><%= campaign.is_anonymous %></td>
+      <td><%= campaign.email %></td>
+      <td><%= campaign.work_category %></td>
+      <td><%= campaign.is_race_multiselect %></td>
+      <td><%= campaign.is_compensation_requested %></td>
+      <td><%= campaign.is_compensation_a_range %></td>
+      <td><%= campaign.reference_gender_male %></td>
+      <td><%= campaign.reference_gender_female %></td>
+      <td><%= campaign.reference_gender_other %></td>
+      <td><%= campaign.reference_race_asian %></td>
+      <td><%= campaign.reference_race_black_or_african_american %></td>
+      <td><%= campaign.reference_race_native_american_or_alaskan_native %></td>
+      <td><%= campaign.reference_race_native_hawaiian_or_other_pacific_islander %></td>
+      <td><%= campaign.reference_race_white %></td>
+      <td><%= campaign.reference_race_other %></td>
+      <td><%= campaign.reference_ethnicity_hispanic_latinx %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.campaign_path(@conn, :show, campaign) %></span>
+        <span><%= link "Edit", to: Routes.campaign_path(@conn, :edit, campaign) %></span>
+        <span><%= link "Delete", to: Routes.campaign_path(@conn, :delete, campaign), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Campaign", to: Routes.campaign_path(@conn, :new) %></span>

@@ -1,0 +1,48 @@
+<h1>Show Response</h1>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @response.email %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @response.gender %>
+  </li>
+
+  <li>
+    <strong>Races:</strong>
+    <%= @response.races %>
+  </li>
+
+  <li>
+    <strong>Hispanic latinx:</strong>
+    <%= @response.hispanic_latinx %>
+  </li>
+
+  <li>
+    <strong>Work category:</strong>
+    <%= @response.work_category %>
+  </li>
+
+  <li>
+    <strong>Tenure:</strong>
+    <%= @response.tenure %>
+  </li>
+
+  <li>
+    <strong>Compensation:</strong>
+    <%= @response.compensation %>
+  </li>
+
+  <li>
+    <strong>Compensation range:</strong>
+    <%= @response.compensation_range %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.response_path(@conn, :edit, @response) %></span>
+<span><%= link "Back", to: Routes.response_path(@conn, :index) %></span>
