@@ -1,0 +1,88 @@
+<h1>Show Campaign</h1>
+
+<ul>
+
+  <li>
+    <strong>Is anonymous:</strong>
+    <%= @campaign.is_anonymous %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @campaign.email %>
+  </li>
+
+  <li>
+    <strong>Work category:</strong>
+    <%= @campaign.work_category %>
+  </li>
+
+  <li>
+    <strong>Is race multiselect:</strong>
+    <%= @campaign.is_race_multiselect %>
+  </li>
+
+  <li>
+    <strong>Is compensation requested:</strong>
+    <%= @campaign.is_compensation_requested %>
+  </li>
+
+  <li>
+    <strong>Is compensation a range:</strong>
+    <%= @campaign.is_compensation_a_range %>
+  </li>
+
+  <li>
+    <strong>Reference gender male:</strong>
+    <%= @campaign.reference_gender_male %>
+  </li>
+
+  <li>
+    <strong>Reference gender female:</strong>
+    <%= @campaign.reference_gender_female %>
+  </li>
+
+  <li>
+    <strong>Reference gender other:</strong>
+    <%= @campaign.reference_gender_other %>
+  </li>
+
+  <li>
+    <strong>Reference race asian:</strong>
+    <%= @campaign.reference_race_asian %>
+  </li>
+
+  <li>
+    <strong>Reference race black or african american:</strong>
+    <%= @campaign.reference_race_black_or_african_american %>
+  </li>
+
+  <li>
+    <strong>Reference race native american or alaskan native:</strong>
+    <%= @campaign.reference_race_native_american_or_alaskan_native %>
+  </li>
+
+  <li>
+    <strong>Reference race native hawaiian or other pacific islander:</strong>
+    <%= @campaign.reference_race_native_hawaiian_or_other_pacific_islander %>
+  </li>
+
+  <li>
+    <strong>Reference race white:</strong>
+    <%= @campaign.reference_race_white %>
+  </li>
+
+  <li>
+    <strong>Reference race other:</strong>
+    <%= @campaign.reference_race_other %>
+  </li>
+
+  <li>
+    <strong>Reference ethnicity hispanic latinx:</strong>
+    <%= @campaign.reference_ethnicity_hispanic_latinx %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.campaign_path(@conn, :edit, @campaign) %></span>
+<span><%= link "Back", to: Routes.campaign_path(@conn, :index) %></span>

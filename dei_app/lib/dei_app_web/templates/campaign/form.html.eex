@@ -1,0 +1,75 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :is_anonymous %>
+  <%= checkbox f, :is_anonymous %>
+  <%= error_tag f, :is_anonymous %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :work_category %>
+  <%= textarea f, :work_category %>
+  <%= error_tag f, :work_category %>
+
+  <%= label f, :is_race_multiselect %>
+  <%= checkbox f, :is_race_multiselect %>
+  <%= error_tag f, :is_race_multiselect %>
+
+  <%= label f, :is_compensation_requested %>
+  <%= checkbox f, :is_compensation_requested %>
+  <%= error_tag f, :is_compensation_requested %>
+
+  <%= label f, :is_compensation_a_range %>
+  <%= checkbox f, :is_compensation_a_range %>
+  <%= error_tag f, :is_compensation_a_range %>
+
+  <%= label f, :reference_gender_male %>
+  <%= number_input f, :reference_gender_male %>
+  <%= error_tag f, :reference_gender_male %>
+
+  <%= label f, :reference_gender_female %>
+  <%= number_input f, :reference_gender_female %>
+  <%= error_tag f, :reference_gender_female %>
+
+  <%= label f, :reference_gender_other %>
+  <%= number_input f, :reference_gender_other %>
+  <%= error_tag f, :reference_gender_other %>
+
+  <%= label f, :reference_race_asian %>
+  <%= number_input f, :reference_race_asian %>
+  <%= error_tag f, :reference_race_asian %>
+
+  <%= label f, :reference_race_black_or_african_american %>
+  <%= number_input f, :reference_race_black_or_african_american %>
+  <%= error_tag f, :reference_race_black_or_african_american %>
+
+  <%= label f, :reference_race_native_american_or_alaskan_native %>
+  <%= number_input f, :reference_race_native_american_or_alaskan_native %>
+  <%= error_tag f, :reference_race_native_american_or_alaskan_native %>
+
+  <%= label f, :reference_race_native_hawaiian_or_other_pacific_islander %>
+  <%= number_input f, :reference_race_native_hawaiian_or_other_pacific_islander %>
+  <%= error_tag f, :reference_race_native_hawaiian_or_other_pacific_islander %>
+
+  <%= label f, :reference_race_white %>
+  <%= number_input f, :reference_race_white %>
+  <%= error_tag f, :reference_race_white %>
+
+  <%= label f, :reference_race_other %>
+  <%= number_input f, :reference_race_other %>
+  <%= error_tag f, :reference_race_other %>
+
+  <%= label f, :reference_ethnicity_hispanic_latinx %>
+  <%= number_input f, :reference_ethnicity_hispanic_latinx %>
+  <%= error_tag f, :reference_ethnicity_hispanic_latinx %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

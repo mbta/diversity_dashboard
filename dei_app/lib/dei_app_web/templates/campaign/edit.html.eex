@@ -1,0 +1,5 @@
+<h1>Edit Campaign</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.campaign_path(@conn, :update, @campaign)) %>
+
+<span><%= link "Back", to: Routes.campaign_path(@conn, :index) %></span>
