@@ -11,11 +11,13 @@ defmodule DeiApp.Repo.Migrations.CreateResponses do
       add :tenure, :integer
       add :compensation, :integer
       add :compensation_range, :string
+      add :user_id, references(:users, on_delete: :nothing)
       add :campaign_id, references(:campaigns, on_delete: :nothing)
 
       timestamps()
     end
 
+    create index(:responses, [:user_id])
     create index(:responses, [:campaign_id])
   end
 end

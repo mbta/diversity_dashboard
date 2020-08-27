@@ -19,6 +19,7 @@ defmodule DeiApp.Campaigns.Campaign do
     field :reference_race_other, :integer
     field :reference_race_white, :integer
     field :work_category, :string
+    field :user_id, :id
 
     timestamps()
   end

@@ -19,9 +19,11 @@ defmodule DeiApp.Repo.Migrations.CreateCampaigns do
       add :reference_race_white, :integer
       add :reference_race_other, :integer
       add :reference_ethnicity_hispanic_latinx, :integer
+      add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
     end
 
+    create index(:campaigns, [:user_id])
   end
 end

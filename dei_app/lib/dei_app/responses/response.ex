@@ -11,6 +11,7 @@ defmodule DeiApp.Responses.Response do
     field :races, {:array, :string}
     field :tenure, :integer
     field :work_category, :string
+    field :user_id, :id
     field :campaign_id, :id
 
     timestamps()
