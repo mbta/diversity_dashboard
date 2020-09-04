@@ -10,6 +10,15 @@ use Mix.Config
 config :dei_app,
   ecto_repos: [DeiApp.Repo]
 
+config :dei_app, DeiApp.Repo,
+  migration_primary_key: [
+    name: :id,
+    type: :binary_id,
+    autogenerate: false,
+    read_after_writes: true,
+    default: {:fragment, "gen_random_uuid()"}
+  ]
+
 # Configures the endpoint
 config :dei_app, DeiAppWeb.Endpoint,
   url: [host: "localhost"],

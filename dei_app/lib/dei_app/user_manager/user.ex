@@ -3,6 +3,8 @@ defmodule DeiApp.UserManager.User do
   import Ecto.Changeset
   alias Argon2
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "users" do
     field(:password, :string)
     field(:email, :string)
