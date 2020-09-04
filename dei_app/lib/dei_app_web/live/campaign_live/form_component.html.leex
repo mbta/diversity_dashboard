@@ -1,0 +1,46 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "campaign-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :should_allow_anonymous %>
+  <%= checkbox f, :should_allow_anonymous %>
+  <%= error_tag f, :should_allow_anonymous %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :salary_question_type %>
+  <%= text_input f, :salary_question_type %>
+  <%= error_tag f, :salary_question_type %>
+
+  <%= label f, :response_form_status %>
+  <%= text_input f, :response_form_status %>
+  <%= error_tag f, :response_form_status %>
+
+  <%= label f, :dashboard_status %>
+  <%= text_input f, :dashboard_status %>
+  <%= error_tag f, :dashboard_status %>
+
+  <%= label f, :work_category_options %>
+  <%= textarea f, :work_category_options %>
+  <%= error_tag f, :work_category_options %>
+
+  <%= label f, :about_form_message %>
+  <%= textarea f, :about_form_message %>
+  <%= error_tag f, :about_form_message %>
+
+  <%= label f, :form_receipt_message %>
+  <%= textarea f, :form_receipt_message %>
+  <%= error_tag f, :form_receipt_message %>
+
+  <%= label f, :protection_code %>
+  <%= text_input f, :protection_code %>
+  <%= error_tag f, :protection_code %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

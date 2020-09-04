@@ -1,0 +1,51 @@
+<h1>Listing Campaigns</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, DeiAppWeb.CampaignLive.FormComponent,
+    id: @campaign.id || :new,
+    title: @page_title,
+    action: @live_action,
+    campaign: @campaign,
+    return_to: Routes.campaign_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Should allow anonymous</th>
+      <th>Email</th>
+      <th>Salary question type</th>
+      <th>Response form status</th>
+      <th>Dashboard status</th>
+      <th>Work category options</th>
+      <th>About form message</th>
+      <th>Form receipt message</th>
+      <th>Protection code</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="campaigns">
+    <%= for campaign <- @campaigns do %>
+      <tr id="campaign-<%= campaign.id %>">
+        <td><%= campaign.should_allow_anonymous %></td>
+        <td><%= campaign.email %></td>
+        <td><%= campaign.salary_question_type %></td>
+        <td><%= campaign.response_form_status %></td>
+        <td><%= campaign.dashboard_status %></td>
+        <td><%= campaign.work_category_options %></td>
+        <td><%= campaign.about_form_message %></td>
+        <td><%= campaign.form_receipt_message %></td>
+        <td><%= campaign.protection_code %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.campaign_show_path(@socket, :show, campaign) %></span>
+          <span><%= live_patch "Edit", to: Routes.campaign_index_path(@socket, :edit, campaign) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: campaign.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Campaign", to: Routes.campaign_index_path(@socket, :new) %></span>
