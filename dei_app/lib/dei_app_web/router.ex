@@ -1,5 +1,6 @@
 defmodule DeiAppWeb.Router do
   use DeiAppWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug(:accepts, ["html"])
@@ -25,7 +26,7 @@ defmodule DeiAppWeb.Router do
   scope "/", DeiAppWeb do
     pipe_through([:browser, :auth])
 
-    get("/", PageController, :index)
+    live "/", PageLive, :index
 
     get("/login", SessionController, :new)
     post("/login", SessionController, :login)
