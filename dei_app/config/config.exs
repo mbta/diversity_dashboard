@@ -18,6 +18,11 @@ config :dei_app, DeiAppWeb.Endpoint,
   pubsub_server: DeiApp.PubSub,
   live_view: [signing_salt: "CWBBl2KA"]
 
+# Guardian config
+config :dei_app, DeiApp.UserManager.Guardian,
+  issuer: "dei_app",
+  secret_key: "lI4+hXYJ4yA2l0L3YHHl6zBr3bvoUTG4Z+tF7Uk9b/UgC5meFnge4BplHxYgb0fR"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
