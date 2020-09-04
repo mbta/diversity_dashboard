@@ -1,5 +1,20 @@
 # DeiApp
 
+## Database stuff
+
+You will need this for guids.
+```
+CREATE EXTENSION pgcrypto;
+```
+
+Command for adding a user
+```
+DeiApp.UserManager.create_user(%{email: "x@x.com", password: "secret"})
+```
+
+
+## Generic Readme
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
