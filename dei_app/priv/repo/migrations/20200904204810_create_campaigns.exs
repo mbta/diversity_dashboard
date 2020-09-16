@@ -4,7 +4,6 @@ defmodule DeiApp.Repo.Migrations.CreateCampaigns do
   def change do
     create table(:campaigns) do
       add(:should_allow_anonymous, :boolean, default: false, null: false)
-      add(:email, :string)
       add(:salary_question_type, :string, null: false)
       add(:response_form_status, :string, null: false)
       add(:dashboard_status, :string, null: false)

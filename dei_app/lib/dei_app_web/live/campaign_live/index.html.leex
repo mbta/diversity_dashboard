@@ -13,7 +13,6 @@
   <thead>
     <tr>
       <th>Should allow anonymous</th>
-      <th>Email</th>
       <th>Salary question type</th>
       <th>Response form status</th>
       <th>Dashboard status</th>
@@ -29,7 +28,6 @@
     <%= for campaign <- @campaigns do %>
       <tr id="campaign-<%= campaign.id %>">
         <td><%= campaign.should_allow_anonymous %></td>
-        <td><%= campaign.email %></td>
         <td><%= campaign.salary_question_type %></td>
         <td><%= campaign.response_form_status %></td>
         <td><%= campaign.dashboard_status %></td>

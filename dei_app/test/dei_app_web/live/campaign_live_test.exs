@@ -5,9 +5,36 @@ defmodule DeiAppWeb.CampaignLiveTest do
 
   alias DeiApp.Campaigns
 
-  @create_attrs %{about_form_message: "some about_form_message", dashboard_status: "some dashboard_status", email: "some email", form_receipt_message: "some form_receipt_message", protection_code: "some protection_code", response_form_status: "some response_form_status", salary_question_type: "some salary_question_type", should_allow_anonymous: true, work_category_options: "some work_category_options"}
-  @update_attrs %{about_form_message: "some updated about_form_message", dashboard_status: "some updated dashboard_status", email: "some updated email", form_receipt_message: "some updated form_receipt_message", protection_code: "some updated protection_code", response_form_status: "some updated response_form_status", salary_question_type: "some updated salary_question_type", should_allow_anonymous: false, work_category_options: "some updated work_category_options"}
-  @invalid_attrs %{about_form_message: nil, dashboard_status: nil, email: nil, form_receipt_message: nil, protection_code: nil, response_form_status: nil, salary_question_type: nil, should_allow_anonymous: nil, work_category_options: nil}
+  @create_attrs %{
+    about_form_message: "some about_form_message",
+    dashboard_status: "some dashboard_status",
+    form_receipt_message: "some form_receipt_message",
+    protection_code: "some protection_code",
+    response_form_status: "some response_form_status",
+    salary_question_type: "some salary_question_type",
+    should_allow_anonymous: true,
+    work_category_options: "some work_category_options"
+  }
+  @update_attrs %{
+    about_form_message: "some updated about_form_message",
+    dashboard_status: "some updated dashboard_status",
+    form_receipt_message: "some updated form_receipt_message",
+    protection_code: "some updated protection_code",
+    response_form_status: "some updated response_form_status",
+    salary_question_type: "some updated salary_question_type",
+    should_allow_anonymous: false,
+    work_category_options: "some updated work_category_options"
+  }
+  @invalid_attrs %{
+    about_form_message: nil,
+    dashboard_status: nil,
+    form_receipt_message: nil,
+    protection_code: nil,
+    response_form_status: nil,
+    salary_question_type: nil,
+    should_allow_anonymous: nil,
+    work_category_options: nil
+  }
 
   defp fixture(:campaign) do
     {:ok, campaign} = Campaigns.create_campaign(@create_attrs)

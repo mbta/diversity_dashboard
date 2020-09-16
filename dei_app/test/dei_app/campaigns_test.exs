@@ -6,9 +6,36 @@ defmodule DeiApp.CampaignsTest do
   describe "campaigns" do
     alias DeiApp.Campaigns.Campaign
 
-    @valid_attrs %{about_form_message: "some about_form_message", dashboard_status: "some dashboard_status", email: "some email", form_receipt_message: "some form_receipt_message", protection_code: "some protection_code", response_form_status: "some response_form_status", salary_question_type: "some salary_question_type", should_allow_anonymous: true, work_category_options: "some work_category_options"}
-    @update_attrs %{about_form_message: "some updated about_form_message", dashboard_status: "some updated dashboard_status", email: "some updated email", form_receipt_message: "some updated form_receipt_message", protection_code: "some updated protection_code", response_form_status: "some updated response_form_status", salary_question_type: "some updated salary_question_type", should_allow_anonymous: false, work_category_options: "some updated work_category_options"}
-    @invalid_attrs %{about_form_message: nil, dashboard_status: nil, email: nil, form_receipt_message: nil, protection_code: nil, response_form_status: nil, salary_question_type: nil, should_allow_anonymous: nil, work_category_options: nil}
+    @valid_attrs %{
+      about_form_message: "some about_form_message",
+      dashboard_status: "some dashboard_status",
+      form_receipt_message: "some form_receipt_message",
+      protection_code: "some protection_code",
+      response_form_status: "some response_form_status",
+      salary_question_type: "some salary_question_type",
+      should_allow_anonymous: true,
+      work_category_options: "some work_category_options"
+    }
+    @update_attrs %{
+      about_form_message: "some updated about_form_message",
+      dashboard_status: "some updated dashboard_status",
+      form_receipt_message: "some updated form_receipt_message",
+      protection_code: "some updated protection_code",
+      response_form_status: "some updated response_form_status",
+      salary_question_type: "some updated salary_question_type",
+      should_allow_anonymous: false,
+      work_category_options: "some updated work_category_options"
+    }
+    @invalid_attrs %{
+      about_form_message: nil,
+      dashboard_status: nil,
+      orm_receipt_message: nil,
+      protection_code: nil,
+      response_form_status: nil,
+      salary_question_type: nil,
+      should_allow_anonymous: nil,
+      work_category_options: nil
+    }
 
     def campaign_fixture(attrs \\ %{}) do
       {:ok, campaign} =
@@ -33,7 +60,6 @@ defmodule DeiApp.CampaignsTest do
       assert {:ok, %Campaign{} = campaign} = Campaigns.create_campaign(@valid_attrs)
       assert campaign.about_form_message == "some about_form_message"
       assert campaign.dashboard_status == "some dashboard_status"
-      assert campaign.email == "some email"
       assert campaign.form_receipt_message == "some form_receipt_message"
       assert campaign.protection_code == "some protection_code"
       assert campaign.response_form_status == "some response_form_status"
@@ -51,7 +77,6 @@ defmodule DeiApp.CampaignsTest do
       assert {:ok, %Campaign{} = campaign} = Campaigns.update_campaign(campaign, @update_attrs)
       assert campaign.about_form_message == "some updated about_form_message"
       assert campaign.dashboard_status == "some updated dashboard_status"
-      assert campaign.email == "some updated email"
       assert campaign.form_receipt_message == "some updated form_receipt_message"
       assert campaign.protection_code == "some updated protection_code"
       assert campaign.response_form_status == "some updated response_form_status"

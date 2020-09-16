@@ -7,7 +7,6 @@ defmodule DeiApp.Campaigns.Campaign do
   schema "campaigns" do
     field :about_form_message, :string
     field :dashboard_status, :string
-    field :email, :string
     field :form_receipt_message, :string
     field :protection_code, :string
     field :response_form_status, :string
@@ -24,7 +23,6 @@ defmodule DeiApp.Campaigns.Campaign do
     campaign
     |> cast(attrs, [
       :should_allow_anonymous,
-      :email,
       :salary_question_type,
       :response_form_status,
       :dashboard_status,
@@ -35,7 +33,6 @@ defmodule DeiApp.Campaigns.Campaign do
     ])
     |> validate_required([
       :should_allow_anonymous,
-      :email,
       :salary_question_type,
       :response_form_status,
       :dashboard_status,
