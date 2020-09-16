@@ -2,6 +2,8 @@ defmodule DeiApp.Campaigns.Campaign do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "campaigns" do
     field :about_form_message, :string
     field :dashboard_status, :string
@@ -20,7 +22,27 @@ defmodule DeiApp.Campaigns.Campaign do
   @doc false
   def changeset(campaign, attrs) do
     campaign
-    |> cast(attrs, [:should_allow_anonymous, :email, :salary_question_type, :response_form_status, :dashboard_status, :work_category_options, :about_form_message, :form_receipt_message, :protection_code])
-    |> validate_required([:should_allow_anonymous, :email, :salary_question_type, :response_form_status, :dashboard_status, :work_category_options, :about_form_message, :form_receipt_message, :protection_code])
+    |> cast(attrs, [
+      :should_allow_anonymous,
+      :email,
+      :salary_question_type,
+      :response_form_status,
+      :dashboard_status,
+      :work_category_options,
+      :about_form_message,
+      :form_receipt_message,
+      :protection_code
+    ])
+    |> validate_required([
+      :should_allow_anonymous,
+      :email,
+      :salary_question_type,
+      :response_form_status,
+      :dashboard_status,
+      :work_category_options,
+      :about_form_message,
+      :form_receipt_message,
+      :protection_code
+    ])
   end
 end
