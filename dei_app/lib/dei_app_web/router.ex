@@ -32,6 +32,12 @@ defmodule DeiAppWeb.Router do
     get("/login", SessionController, :new)
     post("/login", SessionController, :login)
     get("/logout", SessionController, :logout)
+
+    live "/responses", ResponseLive.Index, :index
+    live "/responses/new", ResponseLive.Index, :new
+    live "/responses/:id/edit", ResponseLive.Index, :edit
+    live "/responses/:id", ResponseLive.Show, :show
+    live "/responses/:id/show/edit", ResponseLive.Show, :edit
   end
 
   # Definitely logged in scope
