@@ -1,0 +1,57 @@
+<h1>Show Campaign</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, DeiAppWeb.CampaignLive.FormComponent,
+    id: @campaign.id,
+    title: @page_title,
+    action: @live_action,
+    campaign: @campaign,
+    return_to: Routes.campaign_show_path(@socket, :show, @campaign) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Should allow anonymous:</strong>
+    <%= @campaign.should_allow_anonymous %>
+  </li>
+
+  <li>
+    <strong>Salary question type:</strong>
+    <%= @campaign.salary_question_type %>
+  </li>
+
+  <li>
+    <strong>Response form status:</strong>
+    <%= @campaign.response_form_status %>
+  </li>
+
+  <li>
+    <strong>Dashboard status:</strong>
+    <%= @campaign.dashboard_status %>
+  </li>
+
+  <li>
+    <strong>Work category options:</strong>
+    <%= @campaign.work_category_options %>
+  </li>
+
+  <li>
+    <strong>About form message:</strong>
+    <%= @campaign.about_form_message %>
+  </li>
+
+  <li>
+    <strong>Form receipt message:</strong>
+    <%= @campaign.form_receipt_message %>
+  </li>
+
+  <li>
+    <strong>Protection code:</strong>
+    <%= @campaign.protection_code %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.campaign_show_path(@socket, :edit, @campaign), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.campaign_index_path(@socket, :index) %></span>

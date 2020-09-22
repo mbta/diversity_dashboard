@@ -1,10 +1,12 @@
 defmodule DeiAppWeb.Router do
   use DeiAppWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug(:accepts, ["html"])
     plug(:fetch_session)
-    plug(:fetch_flash)
+    plug(:fetch_live_flash)
+    plug :put_root_layout, {DeiAppWeb.LayoutView, :root}
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
@@ -25,7 +27,7 @@ defmodule DeiAppWeb.Router do
   scope "/", DeiAppWeb do
     pipe_through([:browser, :auth])
 
-    get("/", PageController, :index)
+    live "/", PageLive, :index
 
     get("/login", SessionController, :new)
     post("/login", SessionController, :login)
@@ -37,6 +39,12 @@ defmodule DeiAppWeb.Router do
     pipe_through([:browser, :auth, :ensure_auth])
 
     get("/protected", PageController, :protected)
+
+    live "/campaigns", CampaignLive.Index, :index
+    live "/campaigns/new", CampaignLive.Index, :new
+    live "/campaigns/:id/edit", CampaignLive.Index, :edit
+    live "/campaigns/:id", CampaignLive.Show, :show
+    live "/campaigns/:id/show/edit", CampaignLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
