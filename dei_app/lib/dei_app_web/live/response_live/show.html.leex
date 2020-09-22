@@ -1,0 +1,67 @@
+<h1>Show Response</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, DeiAppWeb.ResponseLive.FormComponent,
+    id: @response.id,
+    title: @page_title,
+    action: @live_action,
+    response: @response,
+    return_to: Routes.response_show_path(@socket, :show, @response) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @response.email %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @response.gender %>
+  </li>
+
+  <li>
+    <strong>Races:</strong>
+    <%= @response.races %>
+  </li>
+
+  <li>
+    <strong>Is hispanic latinx:</strong>
+    <%= @response.is_hispanic_latinx %>
+  </li>
+
+  <li>
+    <strong>Employment type:</strong>
+    <%= @response.employment_type %>
+  </li>
+
+  <li>
+    <strong>Work category:</strong>
+    <%= @response.work_category %>
+  </li>
+
+  <li>
+    <strong>Tenure:</strong>
+    <%= @response.tenure %>
+  </li>
+
+  <li>
+    <strong>Compensation amount:</strong>
+    <%= @response.compensation_amount %>
+  </li>
+
+  <li>
+    <strong>May include salary:</strong>
+    <%= @response.may_include_salary %>
+  </li>
+
+  <li>
+    <strong>Feedback:</strong>
+    <%= @response.feedback %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.response_show_path(@socket, :edit, @response), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.response_index_path(@socket, :index) %></span>

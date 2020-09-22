@@ -1,0 +1,53 @@
+<h1>Listing Responses</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, DeiAppWeb.ResponseLive.FormComponent,
+    id: @response.id || :new,
+    title: @page_title,
+    action: @live_action,
+    response: @response,
+    return_to: Routes.response_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Races</th>
+      <th>Is hispanic latinx</th>
+      <th>Employment type</th>
+      <th>Work category</th>
+      <th>Tenure</th>
+      <th>Compensation amount</th>
+      <th>May include salary</th>
+      <th>Feedback</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="responses">
+    <%= for response <- @responses do %>
+      <tr id="response-<%= response.id %>">
+        <td><%= response.email %></td>
+        <td><%= response.gender %></td>
+        <td><%= response.races %></td>
+        <td><%= response.is_hispanic_latinx %></td>
+        <td><%= response.employment_type %></td>
+        <td><%= response.work_category %></td>
+        <td><%= response.tenure %></td>
+        <td><%= response.compensation_amount %></td>
+        <td><%= response.may_include_salary %></td>
+        <td><%= response.feedback %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.response_show_path(@socket, :show, response) %></span>
+          <span><%= live_patch "Edit", to: Routes.response_index_path(@socket, :edit, response) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: response.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Response", to: Routes.response_index_path(@socket, :new) %></span>
