@@ -10,7 +10,8 @@ import {
   BucketedTenureResponse,
 } from "./../lib/d";
 import { SectionHeader, NewLineSeparator } from "./Layout";
-import { sampleSurveyRecords } from "../lib/sample-data";
+//import { sampleSurveyRecords } from "../lib/sample-data";
+import staffData from "../lib/staff-data";
 import {
   enumToArray,
   elementValueToList,
@@ -24,7 +25,8 @@ import HeatMap from "./charts/Heatmap";
 import JobCategoryBar from "./charts/JobCategoryBar";
 
 declare var dashboardData: any; // eslint-disable-line no-var
-const data = sampleSurveyRecords(100);
+const data = staffData;
+console.log(data);
 const dataBucketed = bucketCompensationRanges(bucketTenureData(data));
 const workCategoryResponses = elementValueToList(data, "work_category").sort();
 

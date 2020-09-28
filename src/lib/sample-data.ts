@@ -52,3 +52,4 @@ const sampleSurveyRecord = (): SurveyRecord => ({
 
 export const sampleSurveyRecords = (count: number): Array<SurveyRecord> =>
   Array.from({ length: count }, () => sampleSurveyRecord());
+  
